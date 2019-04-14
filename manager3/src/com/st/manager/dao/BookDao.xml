@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+ <mapper  namespace="com.st.manager.dao.BookDao">
+
+	
+	<insert id="add"  parameterType="com.st.manager.domain.Book">
+		insert into books (name,price,cover,create_time,update_time,category_id) values (#{name},#{price},#{cover},#{createTime},#{updateTime},#{categoryId})
+	</insert>
+	<update id="update"  parameterType="com.st.manager.domain.Book">
+		update  books  set name=#{name},price=#{price},cover = #{cover}, update_time=#{updateTime},category_id=#{categoryId} where id = #{id}
+	</update>
+	<delete id="delete">
+		delete from books where id = #{id}
+	</delete>
+
+
+<select id="pageQuery" resultType="com.st.manager.domain.Book">
+	select * from books limit #{beginIndex}, #{pageSize}
+</select>
+
+	
+	
+	<select id="getPageDatas"  resultType="com.st.manager.domain.Book">
+		<![CDATA[
+	select b.id, b.name, b.price, b.create_time, b.update_time,c.name cname from books b
+	  join category c on b.category_id = c.id
+	 limit #{beginIndex}, 10
+		]]>	
+	</select>
+	
+	<select id="getPage"  resultType="java.util.Map">
+		<![CDATA[
+	select b.id, b.name, b.price, b.create_time, b.update_time,c.name cname from books b
+	  join category c on b.category_id = c.id
+	 limit #{beginIndex}, 10
+		]]>	
+
+	</select>
+	
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from books b join category c on b.category_id = c.id
+	</select>
+	
+	<select id="getBookById" resultType="com.st.manager.domain.Book">
+		select b.id, b.name, b.price, b.cover, b.category_id from books b where b.id = #{id}
+	</select>
+	
+	<select id="getBookCover" resultType="String">
+		select cover from books  where id= #{id}
+	</select>
+	
+
+
+	 
+	
+</mapper>

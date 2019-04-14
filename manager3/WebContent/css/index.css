@@ -1,0 +1,94 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+.navbar{
+	background-color: #4285F4;
+	height: 50px;
+	font-size: 26px;
+	line-height: 50px;
+	color: #ffffff;
+	padding-left: 20px;
+}
+.main{
+	margin-left: 120px;
+}
+.menu{
+	width: 120px;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	padding-top: 20px;
+	text-align: center;
+	z-index: 2;
+}
+.menu:before {
+	content:"";
+	width: 119px;
+	border-right: 1px solid #e4e4e5;
+	position: fixed;
+	background-color: #f3f3f3;
+	left: 0;
+	bottom: 0;
+	top: 50px;
+	z-index: -1;
+}
+.main .menu a {
+	display: block;
+	height: 28px;
+	color: black;
+	font-size: 18px;
+	line-height: 28px;
+	border-bottom: 1px solid white;
+}
+.main .menu a:hover {
+	background-color: #ffffff;
+}
+.main .content{
+	padding: 20px 10px 0 10px;
+}
+.dataTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.dataTable tr{
+	height: 30px;
+	text-align: center;
+}
+
+.dataTable thead tr{
+	background: #FFFFCC;
+}
+.dataTable tbody tr:nth-child(2n) {
+	background-color: #FFFFCC;
+}
+.content table.dataTable tr:hover {
+	background-color: #FFCC33;
+}
+
+.content table.dataTable tr.page:hover {
+	background-color: #ffffff;
+}
+.pagnation {
+	text-align: center;
+	margin: 10px 0;
+}
+.pagnation li{
+	display: inline-block;
+}
+.pagnation li.active{
+	background-color: #3385ff;
+	height: 22px;
+	width: 22px;
+}
+.pagnation li.active a{
+	color: #ffffff;
+}

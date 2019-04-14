@@ -1,0 +1,35 @@
+<c3p0-config>
+    <default-config> <!-- 默认配置 -->
+        <!-- 连接池初始化的时候创建的连接数量, 默认值为3,该值的取值应该介于最小连接和最大连接之间 -->
+        <property name="initialPoolSize">6</property>
+        <!-- 连接池中最小的连接数, 默认值为3-->
+        <property name="minPoolSize">2</property>
+        <!-- 连接池中最大的连接数，默认值为15 -->
+        <property name="maxPoolSize">8</property>
+        <!-- 最大空闲时间, 表示存在于连接池中的连接如果在指定的秒内没有被使用，则连接被释放,默认值为0,表示永远不会不释放 -->
+        <property name="maxIdleTime">60</property>
+        <!-- 当连接池中的连接不够用的时候，每次增加的数量, 默认值为3-->
+        <property name="acquireIncrement">2</property>
+        <!-- 当从数据库中获取连接失败后，重复尝试的次数，默认值为30, 0表示无限次 -->
+        <property name="acquireRetryAttempts">10</property>
+        <!-- 当从数据库中获取连接失败，间隔多长时间在去尝试，单位为毫秒，默认值为1000,0表示不停的尝试，该变量通常需要与 acquireRetryAttempts配合使用-->
+        <property name="acquireRetryDelay">0</property>
+    </default-config>
+    
+    <named-config name="oracle"> <!-- 用户自定义的配置，如果有相同，则覆盖默认，如果没有相同，则使用默认 -->
+        <!-- 最大空闲时间, 表示存在于连接池中的连接如果在指定的秒内没有被使用，则连接被释放,默认值为0,表示永远不会不释放 -->
+        <property name="acquireRetryDelay">0</property>
+        <property name="driverClass">oracle.jdbc.OracleDriver</property>
+        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:orcl</property>
+        <property name="user">scott</property>
+        <property name="password">tiger</property>
+    </named-config>
+    
+    <named-config name="mysql"> <!-- 用户自定义的配置，如果有相同，则覆盖默认，如果没有相同，则使用默认 -->
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/cart?useSSL=false</property>
+        <property name="user">root</property>
+        <property name="password"></property>
+    </named-config> 
+    
+</c3p0-config>
